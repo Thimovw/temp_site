@@ -25,8 +25,6 @@ app.use((req, res, next) => {
       "img-src 'self' data:",
       "font-src 'self'",
       "connect-src 'self'",
-      "frame-src http://localhost:3002",
-      "frame-src https://guardlight.io",
 
       "object-src 'none'",
       "base-uri 'self'",
@@ -68,9 +66,9 @@ app.get('/.well-known/security.txt', (_req, res) => {
     'Contact: mailto:security@veldsterk.nl\n' +
     'Preferred-Languages: nl, en\n' +
     'Expires: 2027-04-22T00:00:00.000Z\n' +
-    'Policy: https://veldsterk.nl/security\n' +
-    'Acknowledgments: https://veldsterk.nl/security#meldingen\n' +
-    'Canonical: https://veldsterk.nl/.well-known/security.txt\n'
+    'Policy: https://cinestore.nl/security\n' +
+    'Acknowledgments: https://cinestore.nl/security#meldingen\n' +
+    'Canonical: https://cinestore.nl/.well-known/security.txt\n'
   );
 });
 
@@ -104,5 +102,5 @@ app.use((_req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`\n  VeldSterk Outdoor  →  http://localhost:${PORT}\n`);
+  console.log(`\n  CineStore  →  http://localhost:${PORT}\n`);
 });
