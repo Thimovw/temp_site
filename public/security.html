@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Beveiliging en certificaten van CineStore. Informatie over security, certificaten en verantwoord melden van kwetsbaarheden.">
+  <title>Beveiliging &amp; Certificaten | CineStore</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="nav-inner">
+    <a href="/" class="logo">Cine<span>Store</span></a>
+    <ul class="nav-links">
+      <li><a href="/products">Producten</a></li>
+      <li><a href="/about">Over Ons</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+    <div class="nav-cart">
+      <a href="/checkout">Winkelmand (<span id="cart-count">0</span>)</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <div class="content-wrap" style="max-width:960px">
+
+      <h1>Beveiliging &amp; Certificaten</h1>
+      <p class="meta">CineStore B.V. &nbsp;·&nbsp; Bijgewerkt: april 2026</p>
+
+      <p>
+        De beveiliging van onze webshop en de bescherming van uw gegevens staan bij CineStore centraal.
+        Op deze pagina vindt u informatie over onze certificeringen en het proces voor het melden van kwetsbaarheden.
+      </p>
+
+      <!-- Responsible disclosure -->
+      <h2>Verantwoord melden van kwetsbaarheden</h2>
+      <p>
+        Heeft u een kwetsbaarheid of beveiligingsprobleem aangetroffen op onze website of in onze systemen?
+        Wij verzoeken u dit te melden via <a href="mailto:security@cinestore.nl">security@cinestore.nl</a>
+        of via ons <a href="/.well-known/security.txt">security.txt</a> bestand, conform de richtlijnen
+        voor verantwoorde kwetsbaarheidsmelding.
+      </p>
+      <p>
+        Wij vragen u geen misbruik te maken van de kwetsbaarheid, geen gegevens te wijzigen of te verwijderen
+        en de informatie niet met derden te delen voordat wij het probleem hebben verholpen. Bij een melding
+        die aan deze voorwaarden voldoet, nemen wij binnen vijf werkdagen contact met u op en zullen wij
+        geen juridische stappen ondernemen.
+      </p>
+
+      <h2>Certificeringen</h2>
+      <p>
+        CineStore beschikt over de volgende certificeringen en keurmerken:
+      </p>
+      <div class="sec-grid">
+        <div class="sec-card">
+          <div class="status-badge active">Gecertificeerd</div>
+          <h3>Thuiswinkel Waarborg</h3>
+          <img src="/media/thuiswinkelcertificaat.png" alt="Thuiswinkel Waarborg certificaat" style="max-width:160px;margin:0.75rem 0;display:block;">
+          <p style="font-size:.9rem;color:var(--text-muted)">
+            CineStore is aangesloten bij Thuiswinkel Waarborg. Dit keurmerk garandeert
+            dat wij voldoen aan de strenge eisen op het gebied van betrouwbaarheid, klantenservice
+            en veilig online winkelen. [Dit is een voorbeeld, niet een echt certificaat]
+          </p>
+        </div>
+        <div class="sec-card">
+          <div class="status-badge active">Gecertificeerd</div>
+          <h3>PCI DSS (via Mollie)</h3>
+          <p style="font-size:.9rem;color:var(--text-muted)">
+            Onze betaalverwerking verloopt via Mollie B.V., een PCI DSS Level 1 gecertificeerde
+            en door DNB gereguleerde betaalprovider. Betaalkaartgegevens worden niet opgeslagen
+            op onze servers.
+          </p>
+        </div>
+      </div>
+
+      <h2>Contact</h2>
+      <div class="contact-box">
+        <strong>CineStore B.V. — Security</strong><br>
+        E-mail: <a href="mailto:security@cinestore.nl">security@cinestore.nl</a>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Cine<span>Store</span></div>
+      <p class="footer-desc">Uw specialist in films, blu-rays en collectors' editions. Hadewijchstraat&nbsp;14, 9726&nbsp;KL Groningen.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Winkelen</h4>
+      <ul>
+        <li><a href="/products">Alle producten</a></li>
+        <li><a href="/checkout">Winkelmand</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Bedrijf</h4>
+      <ul>
+        <li><a href="/about">Over Ons</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/security">Beveiliging &amp; Certificaten</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Juridisch</h4>
+      <ul>
+        <li><a href="/privacy">Privacybeleid</a></li>
+        <li><a href="/cookies">Cookiebeleid</a></li>
+        <li><a href="/terms">Algemene Voorwaarden</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 CineStore B.V. &nbsp;|&nbsp; KVK: 78234519 &nbsp;|&nbsp; BTW: NL003456789B01</span>
+    <span>Veilig betalen: iDEAL · Visa · Mastercard · PayPal via Mollie</span>
+  </div>
+</footer>
+
+<div id="cookie-banner" class="cookie-consent" style="display:none">
+  <p>Wij gebruiken cookies. Lees ons <a href="/cookies">Cookiebeleid</a>.</p>
+  <div class="cookie-actions">
+    <button class="btn-accept" onclick="acceptCookies()">Accepteer cookies</button>
+    <button class="btn-decline" onclick="declineCookies()">Alleen noodzakelijk</button>
+  </div>
+</div>
+
+<script src="/js/consent-ui.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

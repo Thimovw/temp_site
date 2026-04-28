@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ontdek ons assortiment films, boxsets en collectors' editions bij CineStore. Nieuwe releases en klassiekers beschikbaar.">
+  <title>Alle producten | CineStore</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="nav-inner">
+    <a href="/" class="logo">Cine<span>Store</span></a>
+    <ul class="nav-links">
+      <li><a href="/products">Producten</a></li>
+      <li><a href="/about">Over Ons</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+    <div class="nav-cart">
+      <a href="/checkout" title="Winkelmand">Winkelmand (<span class="cart-count" id="cart-count">0</span>)</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <h1 class="section-title" style="margin-bottom:.375rem">Alle producten</h1>
+    <p style="color:var(--text-muted);margin-bottom:2rem">Films, boxsets en collectors' editions — zorgvuldig geselecteerd voor filmliefhebbers.</p>
+
+    <div class="product-grid">
+
+      <div class="product-card">
+        <div class="product-image">🎬</div>
+        <div class="product-info">
+          <div class="product-name">The Godfather (Blu-ray)</div>
+          <div class="product-desc">Klassieke misdaadfilm, gerestaureerde Blu-ray met extra's en booklet.</div>
+          <div class="product-footer">
+            <span class="product-price">€&nbsp;14,99</span>
+            <button class="btn-add" onclick="addToCart('The Godfather (Blu-ray)', 14.99)">+ Toevoegen</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">🍿</div>
+        <div class="product-info">
+          <div class="product-name">Pulp Fiction (DVD)</div>
+          <div class="product-desc">Quentin Tarantino's cultklassieker. Standaard DVD-uitgave met extra's.</div>
+          <div class="product-footer">
+            <span class="product-price">€&nbsp;9,99</span>
+            <button class="btn-add" onclick="addToCart('Pulp Fiction (DVD)', 9.99)">+ Toevoegen</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">📀</div>
+        <div class="product-info">
+          <div class="product-name">The Godfather Trilogy (Boxset)</div>
+          <div class="product-desc">Complete trilogie op 3-disc boxset met booklet en exclusieve interviews.</div>
+          <div class="product-footer">
+            <span class="product-price">€&nbsp;29,95</span>
+            <button class="btn-add" onclick="addToCart('The Godfather Trilogy (Boxset)', 29.95)">+ Toevoegen</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">🎞️</div>
+        <div class="product-info">
+          <div class="product-name">Spiderman (Collector's Edition)</div>
+          <div class="product-desc">Speciale collectors' editie van Spiderman met artbook.</div>
+          <div class="product-footer">
+            <span class="product-price">€&nbsp;24,95</span>
+            <button class="btn-add" onclick="addToCart('Spirited Away (Collector\'s Edition)', 24.95)">+ Toevoegen</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+    <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Cine<span>Store</span></div>
+      <p class="footer-desc">Specialist in films, blu-rays en collectors' editions. Hadewijchstraat&nbsp;14, 9726&nbsp;KL Groningen. KVK&nbsp;78234519.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Winkelen</h4>
+      <ul>
+        <li><a href="/products">Alle producten</a></li>
+        <li><a href="/checkout">Winkelmand</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Bedrijf</h4>
+      <ul>
+        <li><a href="/about">Over Ons</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/security">Beveiliging &amp; Certificaten</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Juridisch</h4>
+      <ul>
+        <li><a href="/privacy">Privacybeleid</a></li>
+        <li><a href="/cookies">Cookiebeleid</a></li>
+        <li><a href="/terms">Algemene Voorwaarden</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 CineStore B.V. &nbsp;|&nbsp; KVK: 78234519 &nbsp;|&nbsp; BTW: NL003456789B01</span>
+    <span>Veilig betalen: iDEAL · Visa · Mastercard · PayPal via Mollie</span>
+  </div>
+</footer>
+
+<div id="cookie-banner" class="cookie-consent" style="display:none">
+  <p>Wij gebruiken cookies voor een betere gebruikerservaring. Lees ons <a href="/cookies">Cookiebeleid</a>.</p>
+  <div class="cookie-actions">
+    <button class="btn-accept" onclick="acceptCookies()">Accepteer cookies</button>
+    <button class="btn-decline" onclick="declineCookies()">Alleen noodzakelijk</button>
+  </div>
+</div>
+
+<script src="/js/consent-ui.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

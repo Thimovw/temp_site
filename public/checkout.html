@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Afrekenen bij CineStore. Veilig betalen via iDEAL, Visa, Mastercard, PayPal en Klarna via Mollie.">
+  <title>Afrekenen | CineStore</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="nav-inner">
+    <a href="/" class="logo">Cine<span>Store</span></a>
+    <ul class="nav-links">
+      <li><a href="/products">Producten</a></li>
+      <li><a href="/about">Over Ons</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+    <div class="nav-cart">
+      <a href="/checkout" title="Winkelmand">Winkelmand (<span class="cart-count" id="cart-count">0</span>)</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <h1 class="section-title" style="margin-bottom:1.5rem">Bestelling afronden</h1>
+
+    <div class="checkout-grid">
+
+      <!-- Left: form -->
+      <div>
+
+        <!-- Delivery -->
+        <div class="card" style="margin-bottom:1.25rem">
+          <div class="card-title">Bezorgadres</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="first-name">Voornaam</label>
+              <input id="first-name" class="form-control" type="text" placeholder="Jan" autocomplete="given-name">
+            </div>
+            <div class="form-group">
+              <label for="last-name">Achternaam</label>
+              <input id="last-name" class="form-control" type="text" placeholder="de Vries" autocomplete="family-name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">E-mailadres</label>
+            <input id="email" class="form-control" type="email" placeholder="jan@voorbeeld.nl" autocomplete="email">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="street">Straatnaam + huisnummer</label>
+              <input id="street" class="form-control" type="text" placeholder="Voorbeeldstraat 1" autocomplete="street-address">
+            </div>
+            <div class="form-group">
+              <label for="postcode">Postcode</label>
+              <input id="postcode" class="form-control" type="text" placeholder="1234 AB" autocomplete="postal-code">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="city">Woonplaats</label>
+            <input id="city" class="form-control" type="text" placeholder="Amsterdam" autocomplete="address-level2">
+          </div>
+        </div>
+
+        <!-- Payment — critical section for PCI DSS detection -->
+        <div class="card">
+          <div class="card-title">Betaalmethode</div>
+
+          <p style="font-size:.875rem;color:var(--text-muted);margin-bottom:1rem">
+            Betalingen worden veilig verwerkt via
+            <a href="https://mollie.com" rel="noopener noreferrer">Mollie</a> —
+            Payments by Mollie zijn PCI DSS Level 1 gecertificeerd.
+            Uw betaalgegevens worden nooit op onze servers opgeslagen.
+          </p>
+
+          <div class="payment-methods">
+            <label class="pay-method">
+              <input type="radio" name="payment" value="ideal" checked>
+              <span class="pay-method-name">iDEAL</span>
+              <span class="pay-method-tag">Meest gekozen</span>
+            </label>
+            <label class="pay-method">
+              <input type="radio" name="payment" value="visa">
+              <span class="pay-method-name">Visa</span>
+              <span class="pay-method-tag">Creditcard</span>
+            </label>
+            <label class="pay-method">
+              <input type="radio" name="payment" value="mastercard">
+              <span class="pay-method-name">Mastercard</span>
+              <span class="pay-method-tag">Creditcard</span>
+            </label>
+            <label class="pay-method">
+              <input type="radio" name="payment" value="paypal">
+              <span class="pay-method-name">PayPal</span>
+              <span class="pay-method-tag">Checkout via PayPal</span>
+            </label>
+            <label class="pay-method">
+              <input type="radio" name="payment" value="klarna">
+              <span class="pay-method-name">Klarna – Nu kopen, later betalen</span>
+              <span class="pay-method-tag">In 3 termijnen</span>
+            </label>
+            <label class="pay-method">
+              <input type="radio" name="payment" value="bancontact">
+              <span class="pay-method-name">Bancontact</span>
+              <span class="pay-method-tag">België</span>
+            </label>
+          </div>
+
+          <div class="trust-note">
+            <span>
+              Beveiligd door versleutelde verbindingen &amp; PCI DSS gecertificeerde betalingsverwerking via
+              <a href="https://mollie.com" rel="noopener">mollie.com</a>.
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right: order summary -->
+      <div class="card">
+<div class="card-title">Overzicht bestelling</div>
+
+        <div class="order-line">
+          <span>Filmbox</span>
+          <span>€&nbsp;89,95</span>
+        </div>
+        <div class="order-line">
+          <span>Spiderman (Collector's Edition)</span>
+          <span>€&nbsp;129,00</span>
+        </div>
+        <div class="order-line" style="color:var(--text-muted);font-size:.85rem">
+          <span>Verzendkosten</span>
+          <span>Gratis</span>
+        </div>
+
+        <div class="order-line total">
+          <span>Totaal (incl. BTW)</span>
+          <span>€&nbsp;218,95</span>
+        </div>
+
+        <button class="btn btn-primary" style="width:100%;margin-top:1.25rem;font-size:1rem" onclick="alert('Dit is een demo webshop — geen echte betaling verwerkt.')">
+          Bestelling plaatsen →
+        </button>
+
+        <div class="trust-note" style="margin-top:1rem;justify-content:center;text-align:center;flex-wrap:wrap;gap:.5rem">
+          <span class="pay-badge ideal" style="font-size:.72rem">iDEAL</span>
+          <span class="pay-badge visa" style="font-size:.72rem">Visa</span>
+          <span class="pay-badge mc" style="font-size:.72rem">Mastercard</span>
+          <span class="pay-badge paypal" style="font-size:.72rem">PayPal</span>
+          <span class="pay-badge mollie" style="font-size:.72rem">Mollie</span>
+        </div>
+
+        <p style="font-size:.78rem;color:var(--text-muted);margin-top:1rem;text-align:center;line-height:1.5">
+          Door uw bestelling te plaatsen gaat u akkoord met onze
+          <a href="/terms">Algemene Voorwaarden</a> en ons <a href="/privacy">Privacybeleid</a>.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Cine<span>Store</span></div>
+      <p class="footer-desc">Specialist in films, blu-rays en collectors' editions. Hadewijchstraat&nbsp;14, 9726&nbsp;KL Groningen. KVK&nbsp;78234519.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Winkelen</h4>
+      <ul>
+        <li><a href="/products">Alle producten</a></li>
+        <li><a href="/checkout">Winkelmand</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Bedrijf</h4>
+      <ul>
+        <li><a href="/about">Over Ons</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/security">Beveiliging &amp; Certificaten</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Juridisch</h4>
+      <ul>
+        <li><a href="/privacy">Privacybeleid</a></li>
+        <li><a href="/cookies">Cookiebeleid</a></li>
+        <li><a href="/terms">Algemene Voorwaarden</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 CineStore B.V.</span>
+    <span>PCI DSS gecertificeerde betalingen via Mollie</span>
+  </div>
+</footer>
+
+<div id="cookie-banner" class="cookie-consent" style="display:none">
+  <p>Wij gebruiken cookies. Meer info in ons <a href="/cookies">Cookiebeleid</a>.</p>
+  <div class="cookie-actions">
+    <button class="btn-accept" onclick="acceptCookies()">Accepteer cookies</button>
+    <button class="btn-decline" onclick="declineCookies()">Alleen noodzakelijk</button>
+  </div>
+</div>
+
+<script src="/js/consent-ui.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

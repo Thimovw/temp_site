@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CineStore – uw online winkel voor films, blu-rays en collectors' editions. Ontdek nieuwe releases en klassiekers.">
+  <title>CineStore – Films &amp; Blu-ray winkel</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="nav-inner">
+    <a href="/" class="logo">Cine<span>Store</span></a>
+    <ul class="nav-links">
+      <li><a href="/products">Producten</a></li>
+      <li><a href="/about">Over Ons</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+    <div class="nav-cart">
+      <a href="/checkout" title="Winkelmand">Winkelmand (<span id="cart-count">0</span>)</a>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <h1>De beste films, thuis bezorgd</h1>
+  <p>Ontdek nieuwe releases, cultklassiekers en exclusieve boxsets. Al&nbsp;12&nbsp;jaar uw betrouwbare filmwinkel.</p>
+  <div class="hero-actions">
+    <a href="/products" class="btn btn-primary">Bekijk alle producten</a>
+    <a href="/about" class="btn btn-outline">Over CineStore</a>
+  </div>
+</section>
+
+<!-- USP bar -->
+<div class="usps">
+  <div class="usps-inner">
+    <span class="usp-item">Gratis verzending boven &euro;75</span>
+    <span class="usp-item">30 dagen retourrecht</span>
+    <span class="usp-item">Veilig betalen</span>
+    <span class="usp-item">4,8/5 klantbeoordeling</span>
+  </div>
+</div>
+
+<main>
+  <div class="container">
+
+    <!-- Featured products -->
+    <div class="section-head">
+      <h2 class="section-title">Aanbevolen producten</h2>
+      <a href="/products" class="section-link">Alle producten →</a>
+    </div>
+
+    <div class="product-grid">
+
+      <div class="product-card">
+        <div class="product-image">🎬</div>
+        <div class="product-info">
+          <div class="product-name">The Godfather (Blu-ray)</div>
+          <div class="product-desc">Klassieke misdaadfilm, gerestaureerde Blu-ray met extra's en booklet.</div>
+          <div class="product-footer">
+            <span class="product-price">€&nbsp;14,99</span>
+            <button class="btn-add" onclick="addToCart('The Godfather (Blu-ray)', 14.99)">+ Toevoegen</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">🍿</div>
+        <div class="product-info">
+          <div class="product-name">Pulp Fiction (DVD)</div>
+          <div class="product-desc">Quentin Tarantino's cultklassieker. Standaard DVD-uitgave met extra's.</div>
+          <div class="product-footer">
+            <span class="product-price">€&nbsp;9,99</span>
+            <button class="btn-add" onclick="addToCart('Pulp Fiction (DVD)', 9.99)">+ Toevoegen</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">📀</div>
+        <div class="product-info">
+          <div class="product-name">The Godfather Trilogy (Boxset)</div>
+          <div class="product-desc">Complete trilogie op 3-disc boxset met booklet en exclusieve interviews.</div>
+          <div class="product-footer">
+            <span class="product-price">€&nbsp;29,95</span>
+            <button class="btn-add" onclick="addToCart('The Godfather Trilogy (Boxset)', 29.95)">+ Toevoegen</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">🎞️</div>
+        <div class="product-info">
+          <div class="product-name">Spiderman (Collector's Edition)</div>
+          <div class="product-desc">Speciale collectors' editie van Spiderman met artbook.</div>
+          <div class="product-footer">
+            <span class="product-price">€&nbsp;24,95</span>
+            <button class="btn-add" onclick="addToCart('Spiderman (Collector\'s Edition)', 24.95)">+ Toevoegen</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Payment section — critical for PCI DSS detection -->
+    <div class="payment-section">
+      <p>Veilig betalen via uw favoriete betaalmethode — aangeboden door Mollie</p>
+      <div class="pay-badges">
+        <span class="pay-badge ideal">iDEAL</span>
+        <span class="pay-badge visa">Visa</span>
+        <span class="pay-badge mc">Mastercard</span>
+        <span class="pay-badge paypal">PayPal</span>
+        <span class="pay-badge klarna">Klarna</span>
+        <span class="pay-badge mollie">Mollie</span>
+      </div>
+      <p style="margin-top:.625rem;font-size:.75rem;color:#888;">
+        Betalingen worden veilig verwerkt via <a href="https://mollie.com" rel="noopener">mollie.com</a> — PCI&nbsp;DSS&nbsp;gecertificeerde betaalprovider.
+        Wij slaan geen betaalgegevens op onze servers op.
+      </p>
+    </div>
+
+    <!-- Trust section -->
+    <div class="section-head">
+      <h2 class="section-title">Waarom CineStore?</h2>
+    </div>
+    <div class="product-grid" style="grid-template-columns: repeat(auto-fill, minmax(200px,1fr))">
+      <div class="product-card" style="border-left:4px solid var(--green)">
+            <div class="product-info">
+              <div class="product-name" style="color:var(--green)">Kwaliteitsgarantie</div>
+              <div class="product-desc">Alle releases zijn gecontroleerd door onze filmcuratoren. Niet tevreden? Geld terug.</div>
+        </div>
+      </div>
+      <div class="product-card" style="border-left:4px solid var(--green)">
+            <div class="product-info">
+              <div class="product-name" style="color:var(--green)">Beveiligd winkelen</div>
+              <div class="product-desc">Onze webwinkel maakt gebruik van versleutelde verbindingen en veilige betaalverwerking.</div>
+        </div>
+      </div>
+      <div class="product-card" style="border-left:4px solid var(--green)">
+            <div class="product-info">
+              <div class="product-name" style="color:var(--green)">Kwaliteitsselectie</div>
+              <div class="product-desc">We selecteren uitgaven met oog voor restauratie, behoud en extra's voor verzamelaars.</div>
+        </div>
+      </div>
+      <div class="product-card" style="border-left:4px solid var(--green)">
+            <div class="product-info">
+              <div class="product-name" style="color:var(--green)">Snelle levering</div>
+              <div class="product-desc">Besteld v&oacute;&oacute;r 22:00 uur? Morgen in huis. Gratis retourneren binnen 30 dagen.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- Footer — Link texts must match crawler patterns for Deck Watcher -->
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Cine<span>Store</span></div>
+      <p class="footer-desc">Uw specialist in films, blu-rays en collectors' editions. Hadewijchstraat&nbsp;14, 9726&nbsp;KL Groningen. KVK&nbsp;78234519.</p>
+      <a href="https://guardlight.io/6b1df5fa-4d9c-48aa-a485-9e84e8709e18" target="_blank" rel="noopener noreferrer" title="Verified by GuardLight">\n  <img\n    src="https://guardlight.io/trust-badge/entity/e9916729-c849-48e3-8d6f-7facd1fef410/image"\n    alt="GuardLight Trust Badge"\n    width="120"\n    height="120"\n    style="border:none;"\n  />\n</a>
+    </div>
+    <div class="footer-col">
+      <h4>Winkelen</h4>
+      <ul>
+        <li><a href="/products">Alle producten</a></li>
+        <li><a href="/checkout">Winkelmand</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Bedrijf</h4>
+      <ul>
+        <li><a href="/about">Over Ons</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/security">Beveiliging &amp; Certificaten</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Juridisch</h4>
+      <ul>
+        <li><a href="/privacy">Privacybeleid</a></li>
+        <li><a href="/cookies">Cookiebeleid</a></li>
+        <li><a href="/terms">Algemene Voorwaarden</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 CineStore B.V. &nbsp;|&nbsp; KVK: 78234519 &nbsp;|&nbsp; BTW: NL003456789B01</span>
+    <span>Veilig betalen: iDEAL · Visa · Mastercard · PayPal via Mollie</span>
+  </div>
+</footer>
+
+<!-- Cookie consent banner — class="cookie-consent" + "Accepteer cookies" button -->
+<div id="cookie-banner" class="cookie-consent" style="display:none">
+  <p>
+    Wij gebruiken cookies voor een betere gebruikerservaring en om websiteverkeer te analyseren.
+    Lees ons <a href="/cookies">Cookiebeleid</a> en <a href="/privacy">Privacybeleid</a>.
+  </p>
+  <div class="cookie-actions">
+    <button class="btn-accept" onclick="acceptCookies()">Accepteer cookies</button>
+    <button class="btn-decline" onclick="declineCookies()">Alleen noodzakelijk</button>
+  </div>
+</div>
+
+<script src="/js/consent-ui.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>
