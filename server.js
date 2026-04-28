@@ -4,9 +4,43 @@ const express      = require('express');
 const cookieParser = require('cookie-parser');
 const path         = require('path');
 const crypto       = require('crypto');
+const fs           = require('fs');
 
 const app  = express();
 const PORT = process.env.PORT || 3000;
+
+// ─── Feature flags ────────────────────────────────────────────────────────────
+// Toggle via /admin. Resets on server restart.
+
+const flags = {
+  thuiswinkel: true,   // Thuiswinkel Waarborg blok op /security
+  avg        : true,   // AVG/GDPR vermeldingen
+};
+
+// ─── Feature processor ────────────────────────────────────────────────────────
+// Strips <!-- FEATURE:x -->...<!-- /FEATURE:x --> blocks when the flag is off.
+
+function processFeatures(html) {
+  return Object.entries(flags).reduce((out, [name, enabled]) => {
+    if (enabled) return out;
+    const re = new RegExp(
+      `<!--\\s*FEATURE:${name}\\s*-->[\\s\\S]*?<!--\\s*/FEATURE:${name}\\s*-->`,
+      'g'
+    );
+    return out.replace(re, '');
+  }, html);
+}
+
+// ─── Page helper ──────────────────────────────────────────────────────────────
+
+function servePage(res, filename) {
+  const filePath = path.join(__dirname, 'public', filename);
+  fs.readFile(filePath, 'utf8', (err, html) => {
+    if (err) return res.status(500).send('Internal Server Error');
+    res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    res.send(processFeatures(html));
+  });
+}
 
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
@@ -72,28 +106,73 @@ app.get('/.well-known/security.txt', (_req, res) => {
   );
 });
 
-// ─── Static files ─────────────────────────────────────────────────────────────
+// ─── Static files (assets only — no HTML extension matching) ────────────────
 
 app.use(express.static(path.join(__dirname, 'public'), {
-  index     : 'index.html',
-  extensions: ['html'],
+  index: false,
 }));
 
-// ─── Clean URL routing ────────────────────────────────────────────────────────
+// ─── Admin panel (/admin — not linked from site) ──────────────────────────────
+
+const ADMIN_HTML = (f) => `<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin \u2014 CineStore</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 480px; margin: 4rem auto; padding: 1.5rem; }
+    h1   { font-size: 1.4rem; margin-bottom: 1.5rem; }
+    label { display: flex; align-items: center; gap: .75rem; margin-bottom: .5rem; font-size: 1rem; cursor: pointer; }
+    input[type=checkbox] { width: 1.1rem; height: 1.1rem; cursor: pointer; }
+    .desc { font-size: .8rem; color: #555; margin: 0 0 1.25rem 1.85rem; }
+    button { margin-top: .5rem; padding: .55rem 1.4rem; background: #1a7f3c; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 1rem; }
+    button:hover { background: #156932; }
+  </style>
+</head>
+<body>
+  <h1>Feature beheer</h1>
+  <form method="POST" action="/admin">
+    <label>
+      <input type="checkbox" name="thuiswinkel" value="1"${f.thuiswinkel ? ' checked' : ''}>
+      Thuiswinkel Waarborg
+    </label>
+    <p class="desc">Toont het Thuiswinkel Waarborg keurmerk op de beveiligingspagina.</p>
+    <label>
+      <input type="checkbox" name="avg" value="1"${f.avg ? ' checked' : ''}>
+      AVG/GDPR vermeldingen
+    </label>
+    <p class="desc">Toont AVG/GDPR-vermeldingen op de privacypagina, cookiepagina en algemene voorwaarden.</p>
+    <button type="submit">Opslaan</button>
+  </form>
+</body>
+</html>`;
+
+app.get('/admin', (_req, res) => {
+  res.setHeader('Content-Type', 'text/html; charset=utf-8');
+  res.send(ADMIN_HTML(flags));
+});
+
+app.post('/admin', (req, res) => {
+  flags.thuiswinkel = req.body.thuiswinkel === '1';
+  flags.avg         = req.body.avg         === '1';
+  res.redirect(303, '/admin');
+});
+
+// ─── Page routes ──────────────────────────────────────────────────────────────
+
+app.get('/', (_req, res) => servePage(res, 'index.html'));
 
 const PAGES = ['privacy', 'cookies', 'terms', 'contact', 'checkout', 'products', 'security', 'about'];
 
 for (const page of PAGES) {
-  app.get(`/${page}`, (_req, res) =>
-    res.sendFile(path.join(__dirname, 'public', `${page}.html`))
-  );
+  app.get(`/${page}`, (_req, res) => servePage(res, `${page}.html`));
 }
 
 // Aliases
-app.get('/privacybeleid',       (_req, res) => res.sendFile(path.join(__dirname, 'public', 'privacy.html')));
-app.get('/cookiebeleid',        (_req, res) => res.sendFile(path.join(__dirname, 'public', 'cookies.html')));
-app.get('/algemene-voorwaarden',(_req, res) => res.sendFile(path.join(__dirname, 'public', 'terms.html')));
-app.get('/beveiliging',         (_req, res) => res.sendFile(path.join(__dirname, 'public', 'security.html')));
+app.get('/privacybeleid',        (_req, res) => servePage(res, 'privacy.html'));
+app.get('/cookiebeleid',         (_req, res) => servePage(res, 'cookies.html'));
+app.get('/algemene-voorwaarden', (_req, res) => servePage(res, 'terms.html'));
+app.get('/beveiliging',          (_req, res) => servePage(res, 'security.html'));
 
 // ─── 404 fallback ─────────────────────────────────────────────────────────────
 
@@ -102,5 +181,6 @@ app.use((_req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`\n  CineStore  →  http://localhost:${PORT}\n`);
+  console.log(`\n  CineStore  →  http://localhost:${PORT}`);
+  console.log(`  Admin      →  http://localhost:${PORT}/admin\n`);
 });
