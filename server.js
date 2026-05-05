@@ -59,7 +59,7 @@ app.use((req, res, next) => {
       "img-src 'self' data:",
       "font-src 'self'",
       "connect-src 'self'",
-
+      "frame-src https://guardlight.io",
       "object-src 'none'",
       "base-uri 'self'",
       "form-action 'self'",
